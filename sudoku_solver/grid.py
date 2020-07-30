@@ -1,5 +1,7 @@
 from .cell import Cell
 from pprint import pprint
+
+
 class Grid:
     nrows = 0
     ncols = 0
@@ -9,7 +11,7 @@ class Grid:
     def __init__(self, nrows, ncols):
         self.nrows = nrows
         self.ncols = ncols
-        self.grid = [[Cell() for j in range(self.ncols)] for row in range (self.nrows)]
+        self.grid = [[Cell() for _ in range(self.ncols)] for _ in range(self.nrows)]
 
     def get_cell(self, row, col):
         assert row < self.nrows
@@ -27,22 +29,17 @@ class Grid:
     def clean_up_cells(self, row, col, value):
         change_made = False
 
-        #if calculated:
         if True:
-
-            #self.print_poss_values()
             # remove value from possible options in the same row
             for test_col in range(self.ncols):
                 cell = self.grid[row][test_col]
-                if cell.value == None:
+                if cell.value is None:
                     change_made |= self.remove_poss_cell_value(row, test_col, value)
 
             # remove value from possible options in the same column
             for test_row in range(self.nrows):
-                if self.grid[test_row][col].value == None:
+                if self.grid[test_row][col].value is None:
                     change_made |= self.remove_poss_cell_value(test_row, col, value)
-
-            #self.print_poss_values()
 
             # remove value from possible options in the same bento
             bento_row = int(row / self.bento_size)
@@ -53,7 +50,7 @@ class Grid:
                     test_row = bento_row * self.bento_size + b_row
                     cell = self.grid[test_row][test_col]
                     try:
-                        if cell.value == None:
+                        if cell.value is None:
                             change_made |= self.remove_poss_cell_value(test_row, test_col, value)
                     except TypeError:
                         pass
@@ -66,11 +63,9 @@ class Grid:
         changed = self.clean_up_cells(row, col, value)
         return changed
 
-
     def remove_poss_cell_value(self, row, col, value):
         assert row < self.nrows
         assert col < self.ncols
-        #print("     {} {} : Removing Possible Value {}". format(row, col, value))
         change_made = self.grid[row][col].remove_poss_value(value)
         if change_made:
             new_value = self.grid[row][col].get_value()

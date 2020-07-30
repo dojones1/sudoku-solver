@@ -3,7 +3,7 @@ class Cell:
     value = None
 
     def __init__(self):
-        self.poss_values = ['1','2','3','4','5','6','7','8','9']
+        self.poss_values = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
         self.value = None
         self.calculated = False
 
@@ -11,13 +11,13 @@ class Cell:
         return "{} {} {}".format(self.value, self.poss_values, self.calculated)
 
     def is_solved(self):
-        return not (self.value == None)
+        return not (self.value is None)
 
     def get_poss_values(self):
         return self.poss_values
 
     def get_value(self):
-        if self.value == None:
+        if self.value is None:
             return '-'
         return self.value
 

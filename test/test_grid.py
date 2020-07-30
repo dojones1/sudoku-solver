@@ -29,9 +29,9 @@ class TestGrid(TestCase):
         self.assertEqual(cell.value, '2')
 
         # Check that get_cell_value works for location that value is set
-        cell_value = grid.get_cell_value(1,2)
+        cell_value = grid.get_cell_value(1, 2)
         self.assertEqual(cell_value, '2')
 
         # Make sure that value is not set for other location - x,y reversed
-        cell_value = grid.get_cell_value(2,1)
+        cell_value = grid.get_cell_value(2, 1)
         self.assertEqual(cell_value, '-')

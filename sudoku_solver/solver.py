@@ -67,7 +67,6 @@ class SudokuSolver:
 
         pass
 
-
     def apply_horizontal_rules(self):
         print("---- Applying horizontal rule")
         # If a value has been observed in the row,
@@ -85,11 +84,10 @@ class SudokuSolver:
         opt_locations = {}
         change_made = False
 
-        #self.grid.print_poss_values()
         # scan row to count observations made
         for col in range(self.ncols):
-            cell = self.grid.get_cell(row,col)
-            if cell.value == None:
+            cell = self.grid.get_cell(row, col)
+            if cell.value is None:
                 for opt in cell.poss_values:
                     if opt in opt_observations:
                         opt_observations[opt] += 1
@@ -104,12 +102,12 @@ class SudokuSolver:
                 # This has only been seen once, so it must go in the recorded location
                 self.grid.set_cell_value(opt_row, opt_col, opt, True)
                 change_made |= True
-                print("     {} {}: {} - Horizontal Rule - Only one loc".format(opt_row,
-                                                                               opt_col,
-                                                                               self.grid.get_cell_value(opt_row, opt_col)))
+                print("     {} {}: {} - Horizontal Rule - Only one loc"
+                      .format(opt_row,
+                              opt_col,
+                              self.grid.get_cell_value(opt_row, opt_col)))
 
         return change_made
-
 
     def apply_vertical_rules(self):
         # If a value has been observed in that column,
@@ -130,8 +128,8 @@ class SudokuSolver:
 
         # scan column to count observations made
         for row in range(self.nrows):
-            cell = self.grid.get_cell(row,col)
-            if cell.value == None:
+            cell = self.grid.get_cell(row, col)
+            if cell.value is None:
                 for opt in cell.poss_values:
                     if opt in opt_observations:
                         opt_observations[opt] += 1
@@ -146,9 +144,10 @@ class SudokuSolver:
                 # This has only been seen once, so it must go in the recorded location
                 self.grid.set_cell_value(opt_row, opt_col, opt, True)
                 change_made |= True
-                print("     {} {}: {} - Vertical Rule - Only one loc".format(opt_row,
-                                                                               opt_col,
-                                                                               self.grid.get_cell_value(opt_row, opt_col)))
+                print("     {} {}: {} - Vertical Rule - Only one loc"
+                      .format(opt_row,
+                              opt_col,
+                              self.grid.get_cell_value(opt_row, opt_col)))
 
         return change_made
 
@@ -176,7 +175,7 @@ class SudokuSolver:
                 col = bento_col * self.bento_size + b_col
                 cell = self.grid.get_cell(row, col)
 
-                if cell.value == None:
+                if cell.value is None:
                     for opt in cell.poss_values:
                         if opt in opt_observations:
                             opt_observations[opt] += 1
