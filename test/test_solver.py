@@ -311,3 +311,25 @@ class TestGrid(SolverTestCase):
                      '591236847',
                      '376458129']
         self.verify_solver_results(test_grid, soln_grid)
+
+    def test_real_solution_20200801_i(self):
+        test_grid = ['369-2----',
+                     '7--6---5-',
+                     '--8-1--32',
+                     '--7-8-4-9',
+                     '---7-1---',
+                     '6-3-5-1--',
+                     '94--3-8--',
+                     '-3---4--1',
+                     '----6-243']
+        soln_grid = ['369528714',
+                     '721643958',
+                     '458917632',
+                     '517386429',
+                     '284791365',
+                     '693452187',
+                     '942135876',
+                     '836274591',
+                     '175869243']
+
+        self.verify_solver_results(test_grid, soln_grid)
