@@ -42,7 +42,7 @@ jobs:
       - run: |
           export SERVICE_BUILD_TIME_DATE="2021-02-02T15:24:16Z"
           apt-get update
-          apt-get install -y python3-pip python3-pytest python3-flask
+          apt-get install -y python3-pip python3-pytest python3-flask python3-venv
           mkdir test-results
           python3 -m pytest test/*.py -v --junitxml test-results/pytest.xml
 
