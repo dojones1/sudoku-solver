@@ -43,7 +43,17 @@ jobs:
           export SERVICE_BUILD_TIME_DATE="2021-02-02T15:24:16Z"
           apt-get update
           apt-get install -y python3-pip python3-pytest python3-flask
-          python3 -m pytest test/*.py -v
+          mkdir test-results
+          python3 -m pytest test/*.py -v --junitxml test-results/pytest.xml
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action/linux@v2
+        if: always()
+        with:
+          files: |
+            test-results/**/*.xml
+            test-results/**/*.trx
+            test-results/**/*.json
 
   # build-docker:
   #   if: contains( github.ref, 'master') == false
