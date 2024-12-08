@@ -1,18 +1,17 @@
 ---
-  extends: default
-  
-  ignore: |
-    node_modules/**/*.yml
-  
-  rules:
-    braces:
-      max-spaces-inside: 3
-    brackets:
-      max-spaces-inside: 3
-    line-length:
-      max: 180
-      level: warning
-  
-    indentation:
-      indent-sequences: true
-  
+extends: default
+
+ignore: |
+  node_modules/**/*.yml
+
+rules:
+  braces:
+    max-spaces-inside: 3
+  brackets:
+    max-spaces-inside: 3
+  line-length:
+    max: 180
+    level: warning
+
+  indentation:
+    indent-sequences: true

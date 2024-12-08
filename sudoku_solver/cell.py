@@ -27,7 +27,7 @@ class Cell:
     def set(self, value, calculated):
         # Check that value is in the list of possible values
         try:
-            assert(value in self.poss_values)
+            assert (value in self.poss_values)
         except AssertionError:
             pass
 
