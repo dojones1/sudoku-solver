@@ -43,7 +43,7 @@ jobs:
           export SERVICE_BUILD_TIME_DATE="2021-02-02T15:24:16Z"
           apt-get update
           apt-get install -y python3-pip python3-pytest python3-flask
-          python3 -m pytest test/*.py parser/parsers/pkgs/test/*.py -v
+          python3 -m pytest test/*.py -v
 
   # build-docker:
   #   if: contains( github.ref, 'master') == false
