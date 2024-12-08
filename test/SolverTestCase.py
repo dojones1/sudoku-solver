@@ -12,7 +12,7 @@ class SolverTestCase(TestCase):
     def convert_grid(self, simple_grid):
         complex_grid = [None] * self.solver.nrows
         for row in range(self.solver.nrows):
-            complex_grid[row] = [None]*self.solver.ncols
+            complex_grid[row] = [None] * self.solver.ncols
             for col in range(self.solver.ncols):
                 complex_grid[row][col] = simple_grid[row][col]
         return complex_grid
