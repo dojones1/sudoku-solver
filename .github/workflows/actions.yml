@@ -1,7 +1,17 @@
 ---
-name: parser-service-pipeline
+name: sudoku-solver-main-pipeline
 on: [push]  # yamllint disable-line rule:truthy
 jobs:
+  event_file:
+    name: "Event File"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: Event File
+          path: ${{ github.event_path }}
+
   lint-yaml-files:
     runs-on: ubuntu-latest
     container: sdesbure/yamllint
@@ -45,15 +55,13 @@ jobs:
           apt-get install -y python3-pip python3-pytest python3-flask python3-venv
           mkdir test-results
           python3 -m pytest test/*.py -v --junitxml test-results/pytest.xml
-
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action/linux@v2
+      - name: Upload Test Results
         if: always()
+        uses: actions/upload-artifact@v4
         with:
-          files: |
-            test-results/**/*.xml
-            test-results/**/*.trx
-            test-results/**/*.json
+          name: Test Results
+          path: |
+            test-results/*.xml
 
   # build-docker:
   #   if: contains( github.ref, 'master') == false
