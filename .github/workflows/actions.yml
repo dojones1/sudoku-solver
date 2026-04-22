@@ -25,7 +25,7 @@ jobs:
 
   lint-python-files:
     runs-on: ubuntu-latest
-    container: python:3.11-slim-buster
+    container: python:3.11-slim-trixie
     steps:
       - uses: actions/checkout@v4
       - name: Change ownership of /github/home
