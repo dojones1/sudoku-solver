@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Upload
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: Event File
           path: ${{ github.event_path }}
@@ -22,7 +22,7 @@ jobs:
     #     - "*.yml"
     #     - "**/*.yml"
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
       - run: |
           apt update && apt install -y yamllint
       - name: Lint YAML files
@@ -32,12 +32,12 @@ jobs:
     runs-on: ubuntu-latest
     container: python:3.15-slim-trixie
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
       - name: Change ownership of /github/home
         run: |
           apt update && apt install -y sudo
           sudo chown -R $(whoami) /github/home
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7.0.0
         with:
           # python-version: 'python3'
           cache: 'pip'
@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     container: ubuntu:26.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
       - run: |
           export SERVICE_BUILD_TIME_DATE="2021-02-02T15:24:16Z"
           apt-get update
@@ -62,7 +62,7 @@ jobs:
           python3 -m pytest test/*.py -v --junitxml test-results/pytest.xml
       - name: Upload Test Results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: Test Results
           path: |
