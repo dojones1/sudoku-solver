@@ -1,6 +1,8 @@
 ---
 name: sudoku-solver-main-pipeline
 on: [push]  # yamllint disable-line rule:truthy
+permissions:
+  contents: read
 jobs:
   event_file:
     name: "Event File"
